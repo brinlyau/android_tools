@@ -17,6 +17,26 @@ gcc -O2 -Wall -o extract-kallsyms extract-kallsyms.c
 ./extract-kallsyms -k kernel_image -o symbols.txt
 ```
 
+### extract_kernel
+
+Extracts the raw kernel binary from Android boot images (`boot.img`, `vendor_kernel_boot.img`). Supports standard boot images, GKI vendor kernel boot images, and ARM64 kernel carving. Includes built-in LZ4 legacy decompression.
+
+```
+gcc -O2 -Wall -o extract_kernel extract_kernel.c
+./extract_kernel -i vendor_kernel_boot.img -o kernel.raw
+```
+
+### Android ;; android_mitigations_chk
+
+Tests the availability of common kernel exploit primitives, kernel features, build prop settings and debugging interfaces on an Android device. Checks heap spray syscalls (add_key, msgsnd, pipe, sockets, xattr, SCM_RIGHTS), race/timing primitives (userfaultfd, epoll, timerfd, signalfd, user namespaces), privilege escalation helpers (bpf), info leak sources (/proc/kallsyms, /proc/iomem, slabinfo), and relevant kernel command line parameters.
+
+```
+# Cross-compile for Android
+aarch64-linux-android-clang -o android_mitigations_chk android_kernel_mitigations_check.c
+adb push android_mitigations_chk /data/local/tmp/
+adb shell /data/local/tmp/android_mitigations_chk
+```
+
 
 ## See also
 
