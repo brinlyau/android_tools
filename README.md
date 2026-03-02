@@ -37,6 +37,16 @@ adb push android_mitigations_chk /data/local/tmp/
 adb shell /data/local/tmp/android_mitigations_chk
 ```
 
+### dump_sepolicy.py
+
+Dumps an Android `precompiled_sepolicy` binary into a single human-readable text file containing the full policy summary, all types/attributes/classes/roles/booleans, and every TE/RBAC/MLS rule.
+
+Requires: `setools` (`apt install setools` or `pip install setools`)
+
+```
+python3 dump_sepolicy.py precompiled_sepolicy -o policy_dump.txt
+```
+
 ### moto_fw_download.py
 
 Downloads stock firmware for Motorola devices by replicating the LMSA (Lenovo Moto Smart Assistant) firmware lookup flow. Queries Lenovo's servers with device identifiers (IMEI, SKU, etc.) to find and download the correct firmware package. Supports both connected-device (via `adb`) and manual parameter modes.
