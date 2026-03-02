@@ -5,6 +5,19 @@ Just a few Android internals related tools that I wanted to open source because 
 A collection of standalone tools for Android kernel and firmware analysis.
 
 
+## Android examples
+
+### android_exploit_repo
+Save time and just download the standalone NDK zip (no Android Studio required):
+
+| Platform | Download |
+|---|---|
+| Linux x86_64 | https://dl.google.com/android/repository/android-ndk-r29-linux.zip |
+| macOS | https://dl.google.com/android/repository/android-ndk-r29-darwin.dmg |
+
+
+A `Makefile` project is included under `android_exploit_repo/`. This builds `exploit1.c` and `trigger` as static arm64 binaries and pushes them to your device.
+
 ## Tools and scripts
 
 ### extract-kallsyms
