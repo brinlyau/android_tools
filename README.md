@@ -37,6 +37,21 @@ adb push android_mitigations_chk /data/local/tmp/
 adb shell /data/local/tmp/android_mitigations_chk
 ```
 
+### moto_fw_download.py
+
+Downloads stock firmware for Motorola devices by replicating the LMSA (Lenovo Moto Smart Assistant) firmware lookup flow. Queries Lenovo's servers with device identifiers (IMEI, SKU, etc.) to find and download the correct firmware package. Supports both connected-device (via `adb`) and manual parameter modes.
+
+Requires: `requests` (`pip install requests`)
+
+```
+# Auto-detect connected device via adb
+python3 moto_fw_download.py
+
+# Manual mode
+python3 moto_fw_download.py --imei <IMEI> --sku <SKU> --model <MODEL>
+```
+
+
 
 ## See also
 
